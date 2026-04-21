@@ -1,2 +1,3 @@
 # Multi-Factor-Authentication-Deployment-Dissertation
-This repository is for my Honours Year dissertation. Where I have created a teaching tool for people who are not tech savvy. I will show where I started with the project and where I hope to be by the end of my dissertation. My main aim is for people not to look at MFA as a barrier but an extra layer of security to keep them protected while online. 
+This project was developed as part of my Honours Year Dissertation and aims to evaluate the usability of different Multi Factor Authentication (MFA) methods for non-technical users.
+I have developed a system which explores whether MA is perecieved as a barrier or as an additional layer of secuirty 
