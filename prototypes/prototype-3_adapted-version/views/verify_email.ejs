@@ -1,0 +1,19 @@
+<%- include("layout", { body: `
+  <h1>Verify Email Code</h1>
+  <div class="card">
+    <p>Click “Send code” to receive a 6-digit code by email (expires in 10 minutes).</p>
+
+    ${info ? `<div class="info">${info}</div>` : ""}
+    ${error ? `<div class="error">${error}</div>` : ""}
+
+    <form method="POST" action="/verify-email/send" style="margin-bottom:12px;">
+      <button class="btn" type="submit">Send code</button>
+    </form>
+
+    <form method="POST" action="/verify-email/check">
+      <label>6-digit code</label>
+      <input name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required />
+      <button class="btn" type="submit">Verify</button>
+    </form>
+  </div>
+`}) %>

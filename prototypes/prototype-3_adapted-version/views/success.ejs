@@ -1,0 +1,97 @@
+<%- include("layout", { body: `
+  <h1>Success</h1>
+
+  <div class="card">
+    <h2>Your unique code</h2>
+    <p class="code">${completion_code}</p>
+    <p>Please complete the survey below (3–5 minutes). Your responses are anonymous and used for academic research only.</p>
+  </div>
+
+  <div class="card">
+    <h2>MFA Evaluation Survey</h2>
+
+    ${error ? `<div class="error">${error}</div>` : ""}
+    ${info ? `<div class="info">${info}</div>` : ""}
+
+    <form method="POST" action="/questionnaire">
+
+      <label>1. Please enter your unique code</label>
+      <input name="q1_code" type="text" value="${completion_code}" readonly />
+
+      <label>2. Please select one option (Age group)</label>
+      <select name="q2_age_group" required>
+        <option value="">Select…</option>
+        <option value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-44">35-44</option>
+        <option value="45-54">45-54</option>
+        <option value="55-64">55-64</option>
+        <option value="65+">65+</option>
+      </select>
+
+      <label>3. Please enter your Gender</label>
+      <select name="q3_gender" required>
+        <option value="">Select…</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label>4. How confident do you generally feel using computers and online services?</label>
+      <select name="q4_computer_confidence" required>
+        <option value="">Select…</option>
+        <option value="Very Confident">Very Confident</option>
+        <option value="Confident">Confident</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Not very confident">Not very confident</option>
+        <option value="Not confident at all">Not confident at all</option>
+      </select>
+
+      <label>5. How easy or difficult did you find the login and MFA process?</label>
+      <select name="q5_ease" required>
+        <option value="">Select…</option>
+        <option value="Extremely easy">Extremely easy</option>
+        <option value="Easy">Easy</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Difficult">Difficult</option>
+        <option value="Very difficult">Very difficult</option>
+      </select>
+
+      <label>6. Before this study, how familiar were you with Multi-Factor Authentication?</label>
+      <select name="q6_mfa_familiarity" required>
+        <option value="">Select…</option>
+        <option value="Very familiar">Very familiar</option>
+        <option value="Somewhat familiar">Somewhat familiar</option>
+        <option value="Heard of it but never used">Heard of it but never used</option>
+        <option value="Not familiar at all">Not familiar at all</option>
+      </select>
+
+      <label>7. Did you experience any problems during sign in or MFA process?</label>
+      <textarea name="q7_problems" rows="4" placeholder="Enter your answer"></textarea>
+
+      <label>8. How did the duration of the login and MFA process feel?</label>
+      <select name="q8_duration_feel" required>
+        <option value="">Select…</option>
+        <option value="Very Quick">Very Quick</option>
+        <option value="Quick">Quick</option>
+        <option value="Average">Average</option>
+        <option value="Slightly long">Slightly long</option>
+        <option value="Too long">Too long</option>
+      </select>
+
+      <label>9. How satisfied were you with the login experience overall?</label>
+      <select name="q9_satisfaction" required>
+        <option value="">Select…</option>
+        <option value="Very satisfied">Very satisfied</option>
+        <option value="Satisfied">Satisfied</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Dissatisfied">Dissatisfied</option>
+        <option value="Very Dissatisfied">Very Dissatisfied</option>
+      </select>
+
+      <label>10. Please share any thoughts, suggestions or frustrations you had during the process.</label>
+      <textarea name="q10_comments" rows="4" placeholder="Enter your answer"></textarea>
+
+      <button class="btn" type="submit">Submit survey</button>
+    </form>
+  </div>
+`}) %>

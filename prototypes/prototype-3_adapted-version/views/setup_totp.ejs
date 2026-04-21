@@ -1,0 +1,9 @@
+<%- include("layout", { body: `
+  <h1>Set up Authenticator (TOTP)</h1>
+  <div class="card">
+    <p>Scan this QR code using Google Authenticator or Microsoft Authenticator.</p>
+    <img class="qr" src="${qrDataUrl}" alt="TOTP QR code" />
+    <p>After scanning, proceed to enter a 6-digit authenticator code.</p>
+    <a class="btn" href="/verify-totp">Continue</a>
+  </div>
+`}) %>

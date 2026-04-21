@@ -1,0 +1,12 @@
+<%- include("layout", { body: `
+  <h1>Verify Authenticator Code</h1>
+  <div class="card">
+    ${error ? `<div class="error">${error}</div>` : ""}
+
+    <form method="POST" action="/verify-totp">
+      <label>6-digit code from your Authenticator app</label>
+      <input name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required />
+      <button class="btn" type="submit">Verify</button>
+    </form>
+  </div>
+`}) %>

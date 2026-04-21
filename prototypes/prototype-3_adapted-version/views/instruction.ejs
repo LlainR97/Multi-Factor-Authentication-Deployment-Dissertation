@@ -1,0 +1,17 @@
+<%- include("layout", { body: `
+  <h1>MFA Research Study</h1>
+
+  <div class="card">
+    <h2>Instructions</h2>
+    <p>You have been randomly assigned to MFA method: <strong>${method}</strong></p>
+
+    <ul>
+      <li>You will sign up with an email address and password.</li>
+      <li>Your email is used only to deliver a one-time passcode (or to label an authenticator entry).</li>
+      <li>Email addresses are not used as identifiers in the research dataset and are deleted after authentication.</li>
+      <li>After successful authentication, you will receive an on-screen completion code above the questionnaire.</li>
+    </ul>
+
+    <a class="btn" href="/signup">Continue to Sign Up</a>
+  </div>
+`}) %>

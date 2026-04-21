@@ -1,0 +1,18 @@
+<%- include("layout", { body: `
+  <h1>Sign Up</h1>
+  <div class="card">
+    <p>MFA method assigned: <strong>${method}</strong></p>
+
+    ${error ? `<div class="error">${error}</div>` : ""}
+
+    <form method="POST" action="/signup">
+      <label>Email address</label>
+      <input name="email" type="email" required />
+
+      <label>Password</label>
+      <input name="password" type="password" required minlength="8" />
+
+      <button class="btn" type="submit">Create account</button>
+    </form>
+  </div>
+`}) %>
