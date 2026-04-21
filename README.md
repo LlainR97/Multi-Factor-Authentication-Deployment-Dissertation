@@ -37,7 +37,7 @@ The following screenshots illustrate the complete user journey:
 
 ![Email OTP](final-artefact-screenshots/Verify_email_OTP.png)
 
-![TOTP Setup](final-artefact-screenshots/Authenticator Setup.png)
+![TOTP Setup](final-artefact-screenshots/Authenticator_setup.png)
 
 ![Questionnaire](final-artefact-screenshots/questionnaire.png)
 
