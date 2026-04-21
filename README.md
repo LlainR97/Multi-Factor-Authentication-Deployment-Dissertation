@@ -1,4 +1,4 @@
-# Multi-Factor-Authentication-Deployment-Dissertation
+# Multi-Factor Authentication Deployment Dissertation
 Overview 
 This project was developed as part of my Honours Year Dissertation and aims to evaluate the usability of different Multi Factor Authentication (MFA) methods for non-technical users. I have developed a system which explores whether MFA is perceived as a barrier or as an additional layer of security. 
 The application guides users through a structured authentication process, each method is randomised. The two methods used were Email One-Time Passcode (OTP) and Time-Based One-Time Passcode (TOTP). After participants had either completed or been unable to complete the process, they would then have the chance to fill out a short questionnaire. The questionnaire captured user feedback and performance data. 
