@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Create Account</h2>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <button type="button" onclick="register()">Create Account</button>
+  <p id="message"></p>
+</div>
+
+<script>
+async function register() {
+  console.log("register() called"); // Debug
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    document.getElementById("message").innerText = "Please fill in both fields";
+    return;
+  }
+
+  document.getElementById("message").innerText = "Creating account...";
+
+  try {
+    const response = await fetch("http://localhost:3000/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+    document.getElementById("message").innerText = data.message;
+
+    if (data.success) {
+      // Redirect to verify.html after success
+      window.location.href = "verify.html?email=" + encodeURIComponent(email);
+    }
+  } catch (error) {
+    console.error("Register error:", error);
+    document.getElementById("message").innerText = "Error: Could not connect to server";
+  }
+}
+</script>
+</body>
+</html>

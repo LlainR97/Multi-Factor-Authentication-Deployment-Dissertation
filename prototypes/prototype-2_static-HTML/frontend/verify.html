@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verify Email</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Email Verification</h2>
+  <p>Enter the 6-digit code sent to your email.</p>
+  <input type="text" id="code" placeholder="Verification Code" maxlength="6">
+  <button id="verifyBtn">Verify</button>
+  <p id="message"></p>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const email = urlParams.get("email");
+
+document.getElementById('verifyBtn').addEventListener('click', async () => {
+  const code = document.getElementById("code").value;
+  const msgEl = document.getElementById("message");
+
+  if (!code) { msgEl.innerText = "Enter the code"; return; }
+
+  try {
+    const res = await fetch("http://localhost:3000/verify-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, code })
+    });
+    const data = await res.json();
+    msgEl.innerText = data.message;
+
+    if (data.success) {
+      // Store email for TOTP page
+      localStorage.setItem("email", email);
+
+      // Redirect to TOTP setup
+      setTimeout(() => {
+        window.location.href = "totpsetup.html";
+      }, 500);
+    }
+  } catch (err) {
+    console.error(err);
+    msgEl.innerText = "Error connecting to server.";
+  }
+});
+</script>
+</body>
+</html>
