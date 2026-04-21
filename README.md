@@ -27,11 +27,17 @@ The following screenshots illustrate the complete user journey:
 
 Development Process 
 The system was developed through multiple stages:
+
 	Prototype 1 – Basic login interface 
+
 	Prototype 2 – Static MFA implementation 
+
 	Prototype 3 – Interactive system 
+
 	Final System – Fully functional deployed Application
+
 All prototypes are included in this repository to demonstrate progression and the designs evolution. 
+
 Results Summary
 A total of 37 participants completed the study. 
 MFA Completion Rates
