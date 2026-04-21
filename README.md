@@ -65,7 +65,7 @@ Results Summary
 
 A total of 37 participants completed the study. 
 
-MFA Completion Rates
+![MFA Completion](results/mfa-completion-chart.png)
  
 	Email OTP: 17/18 completed 
 
