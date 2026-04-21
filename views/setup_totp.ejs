@@ -1,0 +1,27 @@
+<%- include("layout", { body: `
+  <div class="container">
+    <h1>Set up Authenticator (TOTP)</h1>
+
+    <div class="card">
+      <p>Scan this QR code using Google Authenticator or Microsoft Authenticator.</p>
+
+      <img class="qr" src="${qrDataUrl}" alt="TOTP QR code" />
+
+      <p>After scanning, proceed to enter a 6-digit authenticator code.</p>
+
+      <div class="actions" style="justify-content:flex-start;">
+        <a class="btn" href="/verify-totp">Continue</a>
+      </div>
+
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #e5e7eb;">
+
+      <p class="small">Having trouble setting up the authenticator on your device?</p>
+
+      <form method="POST" action="/mfa-unable">
+        <button class="btn btnSecondary" type="submit">
+          I’m unable to complete this step
+        </button>
+      </form>
+    </div>
+  </div>
+` }) %>

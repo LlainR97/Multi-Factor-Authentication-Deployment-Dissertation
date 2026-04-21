@@ -1,0 +1,67 @@
+<%- include("layout", { body: `
+  <h1>Verify Email Code</h1>
+  <div class="card">
+    <p>Click “Send code” to receive a 6-digit code by email (expires in 10 minutes).</p>
+
+    ${info ? `<div class="info">${info}</div>` : ""}
+    ${error ? `<div class="error">${error}</div>` : ""}
+
+    <form method="POST" action="/verify-email/send" style="margin-bottom:12px;">
+      <button class="btn" type="submit">Send code</button>
+    </form>
+
+<form method="POST" action="/verify-email/check" id="otpForm">
+  <label>Enter 6-digit code</label>
+
+<div class="otp-wrapper">
+  <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-input" />
+  <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-input" />
+  <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-input" />
+  <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-input" />
+  <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-input" />
+  <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-input" />
+</div>
+
+<input type="hidden" name="code" id="otpHidden" required />
+
+  <button class="btn" type="submit">Verify</button>
+</form>
+
+<hr style="margin: 20px 0; border: none; border-top: 1px solid #e5e7eb;">
+
+<p class="small">Having trouble with email verification?</p>
+
+<form method="POST" action="/mfa-unable">
+  <button class="btn btnSecondary" type="submit">
+    I’m unable to complete this step
+  </button>
+</form>
+  </div>
+
+  <script>
+const inputs = document.querySelectorAll(".otp-input");
+const hiddenInput = document.getElementById("otpHidden");
+
+inputs.forEach((input, index) => {
+  input.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+
+    if (e.target.value && index < inputs.length - 1) {
+      inputs[index + 1].focus();
+    }
+
+    updateHidden();
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace" && !input.value && index > 0) {
+      inputs[index - 1].focus();
+    }
+  });
+});
+
+function updateHidden() {
+  hiddenInput.value = Array.from(inputs).map(i => i.value).join("");
+}
+</script>
+`}) %>

@@ -1,0 +1,45 @@
+<%- include("layout", { body: `
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">Sign up</h1>
+        <p class="subtitle">Create an account to start the MFA task.</p>
+      </div>
+      <div class="badge">
+        Assigned method:
+        <span>${method === "TOTP" ? "Authenticator app (TOTP)" : "Email code (OTP)"}</span>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1fr; max-width: 720px;">
+      <div class="card">
+        ${error ? `<div class="notice noticeWarn"><strong>Fix needed:</strong> ${error}</div>` : ""}
+
+        <form method="POST" action="/signup" class="kv" style="gap: 14px;">
+          <div>
+            <label class="muted" for="email"><strong>Email address</strong></label><br/>
+            <input id="email" name="email" type="email" required
+              style="width:100%; padding:12px 12px; border:1px solid var(--border); border-radius:12px; margin-top:6px;" />
+          </div>
+
+          <div>
+            <label class="muted" for="password"><strong>Password</strong></label><br/>
+            <input id="password" name="password" type="password" required minlength="8"
+              style="width:100%; padding:12px 12px; border:1px solid var(--border); border-radius:12px; margin-top:6px;" />
+            <div class="small" style="margin-top:8px;">
+              Minimum 8 characters. Your password is stored securely using bcrypt.
+            </div>
+          </div>
+
+          <div class="actions" style="justify-content:flex-end;">
+            <button class="btn" type="submit">Create account</button>
+          </div>
+        </form>
+
+        <div class="footerNote">
+          Email addresses are used only to deliver a one-time code (if assigned Email OTP) and are removed after completion or timeout.
+        </div>
+      </div>
+    </div>
+  </div>
+` }) %>

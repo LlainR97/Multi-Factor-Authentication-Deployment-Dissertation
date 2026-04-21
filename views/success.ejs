@@ -1,0 +1,246 @@
+<%- include("layout", { body: `
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">Questionnaire</h1>
+        <p class="subtitle">You’ve completed the MFA step. Please complete the short survey below (3–5 minutes).
+        </p>
+        <div class="notice noticeInfo" style="margin-top: 10px;">
+          If you were unable to complete the process. Please answer based on your experience so far.
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1fr; gap: 18px;">
+      <div class="card">
+        <h2 style="margin:0 0 10px 0;">Your unique completion code</h2>
+        <div class="codeBox">
+          <span class="codeMono">${completion_code}</span>
+          <button class="btn btnSecondary" type="button" onclick="navigator.clipboard.writeText('${completion_code}')">
+            Copy
+          </button>
+        </div>
+        <div class="small" style="margin-top:10px;">
+          Enter this code in Question 1. It links your survey to the MFA process without using your email.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 10px 0;">MFA Evaluation Survey</h2>
+
+        ${error ? `<div class="notice noticeWarn"><strong>Check:</strong> ${error}</div>` : ""}
+        ${info ? `<div class="notice noticeOk"><strong>Done:</strong> ${info}</div>` : ""}
+
+        <form method="POST" action="/questionnaire" class="survey">
+          <!-- Q1 -->
+          <div class="field">
+            <label for="q1_code">1. Please enter your unique code</label>
+            <input id="q1_code" name="q1_code" type="text" required
+              value="${completion_code}"
+              autocomplete="off" />
+            <div class="hint">This is shown above after login. Even if Participants were unable to complete the task.</div>
+          </div>
+
+          <div class="twoCol">
+
+            <!-- Q2 -->
+            <div class="field">
+              <label for="q2_age_group">2. Age group</label>
+              <select id="q2_age_group" name="q2_age_group" required>
+                <option value="" selected disabled>Select…</option>
+                <option>18-24</option>
+                <option>25-34</option>
+                <option>35-44</option>
+                <option>45-54</option>
+                <option>55-64</option>
+                <option>65+</option>
+              </select>
+            </div>
+
+            <!-- Q3 -->
+            <div class="field">
+              <label for="q3_gender">3. Gender</label>
+              <select id="q3_gender" name="q3_gender" required>
+                <option value="" selected disabled>Select…</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="field">
+            <label for="q4_computer_confidence">4. How confident do you generally feel using computers and online services?</label>
+            <select id="q4_computer_confidence" name="q4_computer_confidence" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Very Confident</option>
+              <option>Confident</option>
+              <option>Neutral</option>
+              <option>Not very confident</option>
+              <option>Not confident at all</option>
+            </select>
+          </div>
+
+          <!-- Q5 -->
+          <div class="field">
+            <label for="q5_ease">5. How easy or difficult did you find the login and MFA process?</label>
+            <select id="q5_ease" name="q5_ease" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Extremely easy</option>
+              <option>Easy</option>
+              <option>Neutral</option>
+              <option>Difficult</option>
+              <option>Very difficult</option>
+            </select>
+          </div>
+
+          <!-- Q6 -->
+          <div class="field">
+            <label for="q6_mfa_familiarity">6. Before this study, how familiar were you with Multi-Factor Authentication?</label>
+            <select id="q6_mfa_familiarity" name="q6_mfa_familiarity" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Very familiar</option>
+              <option>Somewhat familiar</option>
+              <option>Heard of it but never used</option>
+              <option>Not familiar at all</option>
+            </select>
+          </div>
+
+          <!-- Q7 -->
+          <div class="field">
+            <label for="q7_mfa_security">7. How secure did this login process feel?</label>
+            <select id="q7_mfa_security" name="q7_mfa_security" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Very Secure</option>
+              <option>Secure</option>
+              <option>Neutral</option>
+              <option>Insecure</option>
+              <option>Very Insecure</option>
+            </select>
+          </div>
+
+          <!-- Q8 -->
+          <div class="field">
+            <label for="q8_mfa_trust">8. Would you trust this login method for important accounts (e.g banking)?</label>
+            <select id="q8_mfa_trust" name="q8_mfa_trust" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Yes definitely</option>
+              <option>Probably</option>
+              <option>Unsure</option>
+              <option>Probably not</option>
+              <option>Definitely not</option>
+            </select>
+          </div>
+
+          <!-- Q9 -->
+          <div class="field">
+            <label for="q9_problems">9. Did you experience any problems during sign in or the MFA process?</label>
+            <textarea id="q9_problems" name="q9_problems" rows="4" placeholder="Optional — describe any issues you had"></textarea>
+          </div>
+
+            <!-- Q10 -->
+	  <div class="field">
+	    <label for="q10_duration_feel">10. How did the duration of the login and MFA process feel?</label>
+	    <select id="q10_duration_feel" name="q10_duration_feel" required>
+              <option value="" selected disabled>Select…</option>
+	      <option>Very Quick</option>
+              <option>Quick</option>
+              <option>Average</option>
+              <option>Slightly long</option>
+              <option>Too long</option>
+	    </select>
+	  </div>
+
+         <div class="twoCol">
+	 <!-- Q11 -->
+           <div class="field">
+            <label for="q11_satisfaction">11. How satisfied were you with the login experience overall?</label>
+            <select id="q11_satisfaction" name="q11_satisfaction" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Very satisfied</option>
+              <option>Satisfied</option>
+              <option>Neutral</option>
+              <option>Dissatisfied</option>
+              <option>Very Dissatisfied</option>
+            </select>
+           </div>
+
+          <!-- Q12 -->
+          <div class="field">
+           <label for="q12_recommend">12. Would you recommend this authentication method to others?</label>
+           <select id="q12_recommend" name="q12_recommend" required>
+             <option value="" selected disabled>Select…</option>
+             <option>Yes</option>
+             <option>Maybe</option>
+             <option>No</option>
+           </select>
+          </div>
+        </div>
+
+        <!-- Q13 -->
+         <div class="field">
+          <label for="q13_comments">13. Please share any thoughts, suggestions or frustrations you had during the process.</label>
+          <textarea id="q13_comments" name="q13_comments" rows="4" placeholder="Optional — any comments"></textarea>
+         </div>
+
+        ${completion_status && completion_status.startsWith("UNABLE_") ? `
+        <div class="card" style="margin-top: 18px;">
+          <h2>Additional questions</h2>
+ 
+        <div class="field">
+         <label>14. What prevented you from completing the MFA step?</label>
+         <select name="q14_reason">
+           <option value="" selected disabled>Select…</option>
+           <option>I didn’t have the right device</option>
+           <option>I couldn’t scan the QR code</option>
+           <option>I didn’t receive the email code</option>
+           <option>I didn’t understand the instructions</option>
+           <option>It was too complicated</option>
+           <option>Other</option>
+         </select>
+        </div>
+
+        <div class="field">
+         <label>15. What device were you using?</label>
+         <select name="q15_device">
+           <option value="" selected disabled>Select…</option>
+           <option>Mobile phone</option>
+           <option>Tablet / iPad</option>
+           <option>Laptop / Desktop</option>
+         </select>
+        </div>
+
+        <div class="field">
+         <label>16. At what stage did you stop?</label>
+         <select name="q16_stage">
+           <option value="" selected disabled>Select…</option>
+           <option>During setup (QR code)</option>
+           <option>Entering the code</option>
+           <option>Waiting for email code</option>
+           <option>Other</option>
+         </select>
+        </div>
+       </div>
+` : ""}
+
+       <div class="actions" style="justify-content:flex-end; margin-top: 12px;">
+         <button class="btn" type="submit">Submit survey</button>
+       </div>
+
+       <div class="footerNote" style="margin-top:14px;">
+            Your responses are anonymous and used for academic research only.
+       </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+${info ? `
+<script>
+  setTimeout(() => {
+    window.location.href = "/complete";
+  }, 2000);
+</script>
+` : ""}
+
+` }) %>

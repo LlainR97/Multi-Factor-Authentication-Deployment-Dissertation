@@ -1,0 +1,141 @@
+<%- include("layout", { body: `
+<div class="container">
+  <div class="header">
+    <div>
+      <h1 class="title">MFA Study Instructions</h1>
+      <p class="subtitle">
+        You’ll complete a short login + multi-factor authentication (MFA) task, then answer a quick survey.
+        This usually takes <strong>5-10 minutes</strong>.
+      </p>
+    </div>
+
+    <div class="badge">
+      Assigned method:
+      <span>${mfa_method === "TOTP" ? "Authenticator app (TOTP)" : "Email code (OTP)"}</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Left: video + steps -->
+    <div class="card">
+      <h2>Watch a quick demo</h2>
+      <p class="muted">
+        This short video shows exactly what you’ll do next. If you’re not confident with technology,
+        just follow the steps shown on screen.
+      </p>
+
+      <div class="videoWrap">
+        ${
+          mfa_method === "TOTP"
+            ? `<video controls preload="metadata">
+                 <source src="/videos/MFA_Research_Study_TOTP_Final.mp4" type="video/mp4" />
+               </video>`
+            : `<video controls preload="metadata">
+                 <source src="/videos/MFA_Research_Study_EmailOTP_Final.mp4" type="video/mp4" />
+               </video>`
+        }
+      </div>
+
+      <div class="steps">
+        ${
+          mfa_method === "TOTP"
+            ? `
+              <div class="step">
+                <div class="stepNum">1</div>
+                <div>
+                  <h3>Install an authenticator app (if needed)</h3>
+                  <p>Use Google Authenticator or Microsoft Authenticator.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="stepNum">2</div>
+                <div>
+                  <h3>Scan the QR code</h3>
+                  <p>Open the authenticator app → Add account → Scan QR code.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="stepNum">3</div>
+                <div>
+                  <h3>Enter the 6-digit code</h3>
+                  <p>Type the code shown in the authenticator app to finish.</p>
+                </div>
+              </div>
+            `
+            : `
+              <div class="step">
+                <div class="stepNum">1</div>
+                <div>
+                  <h3>Request your email code</h3>
+                  <p>Click “Send code” and check your inbox for a 6-digit number.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="stepNum">2</div>
+                <div>
+                  <h3>Enter the 6-digit code</h3>
+                  <p>Type the code on the verification screen to finish.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="stepNum">3</div>
+                <div>
+                  <h3>Complete the short survey</h3>
+                  <p>After success, you’ll receive a completion code and answer the questionnaire.</p>
+                </div>
+              </div>
+            `
+        }
+      </div>
+
+      ${
+        mfa_method === "TOTP"
+          ? `<div class="notice noticeWarn">
+               <strong>Tip:</strong> If you scan the QR code with your phone camera and nothing happens,
+               open Google/Microsoft Authenticator and use “Scan QR code” inside the app.
+             </div>`
+          : `<div class="notice">
+               <strong>Tip:</strong> If you don’t see the email, check spam/junk folders. You can request a new code if needed.
+             </div>`
+      }
+
+      <div class="actions">
+        <a class="btn" href="/signup">Continue</a>
+      </div>
+
+      <div class="footerNote">
+        Your email is used only to deliver a one-time code (if assigned Email OTP) and is removed after completion or timeout.
+        Research data is stored anonymously using a participant ID.
+      </div>
+    </div>
+
+    <!-- Right: summary + privacy -->
+    <div class="card">
+      <h2>What happens to my data?</h2>
+      <p class="muted">
+        This study collects timing information (e.g., how long the MFA process took) and your survey responses.
+        We do not analyse or retain email addresses in the research dataset.
+      </p>
+
+      <div class="kv">
+        <div class="kvRow">
+          <strong>Time to complete:</strong>
+          <span>~5-10 minutes</span>
+        </div>
+        <div class="kvRow">
+          <strong>What you’ll do:</strong>
+          <span>Create an account → Complete MFA → Submit survey</span>
+        </div>
+        <div class="kvRow">
+          <strong>Identifier used:</strong>
+          <span>Anonymous participant ID + completion code</span>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
+        If anything is unclear, follow the video and step cards above. There are no “trick” steps.
+      </p>
+    </div>
+  </div>
+</div>
+`}) %>

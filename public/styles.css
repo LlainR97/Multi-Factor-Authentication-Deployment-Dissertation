@@ -1,0 +1,454 @@
+/* ========================================
+   1. Base / Variables
+======================================== */
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --brand: #2563eb;
+  --brandDark: #1e40af;
+  --ok: #16a34a;
+  --warn: #b45309;
+  --shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+  --radius: 16px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html, body{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg);
+}
+
+img,
+video{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, p, label {
+  word-wrap: break-word;
+}
+
+
+/* ========================================
+   2. Layout
+======================================== */
+.container{
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 18px 44px;
+}
+
+.header{
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.title{
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle{
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 70ch;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.gridSingle{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.twoCol{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+
+/* ========================================
+   3. Components
+======================================== */
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  width: 100%;
+}
+
+.card h2{
+  margin: 0 0 10px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--brandDark);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.notice{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(16,185,129,0.25);
+  background: rgba(16,185,129,0.08);
+  color: #065f46;
+  line-height: 1.5;
+}
+
+.notice strong{
+  color: #064e3b;
+}
+
+.noticeWarn{
+  border-color: rgba(245,158,11,0.25);
+  background: rgba(245,158,11,0.10);
+  color: #7c2d12;
+}
+
+.actions{
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.btn{
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover{
+  background: var(--brandDark);
+}
+
+.btnSecondary{
+  background: #eef2ff;
+  color: #1e3a8a;
+  border: 1px solid rgba(30,58,138,0.15);
+}
+
+.btnSecondary:hover{
+  background: #e0e7ff;
+}
+
+.small{
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footerNote{
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.muted{
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+
+/* ========================================
+   4. Instruction Page / Steps
+======================================== */
+.kv{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.kvRow{
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: #fbfcff;
+}
+
+.kvRow strong{
+  min-width: 140px;
+}
+
+.steps{
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.step{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.stepNum{
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  flex: 0 0 auto;
+}
+
+.step h3{
+  margin: 0;
+  font-size: 15px;
+}
+
+.step p{
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.videoWrap{
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  margin-top: 10px;
+}
+
+
+/* ========================================
+   5. Forms / Survey
+======================================== */
+.survey .field,
+.formField{
+  margin: 14px 0;
+}
+
+.survey label,
+.formField label{
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.survey .hint{
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.survey input[type="text"],
+.survey input[type="email"],
+.survey input[type="password"],
+.survey select,
+.survey textarea,
+.formField input[type="text"],
+.formField input[type="email"],
+.formField input[type="password"],
+.formField select,
+.formField textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: white;
+  outline: none;
+  font-size: 16px;
+}
+
+.survey textarea,
+.formField textarea{
+  resize: vertical;
+}
+
+.noticeInfo {
+  border-color: rgba(37, 99, 235, 0.25);
+  background: rgba(37, 99, 235, 0.08);
+  color: #1e3a8a;
+}
+/* ========================================
+   6. Completion Code Box
+======================================== */
+.codeBox{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  background: #fff;
+}
+
+.codeMono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   7. OTP Styling
+======================================== */
+.otp-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px 0;
+  flex-wrap: nowrap;
+}
+
+.otp-input {
+  width: 48px;
+  height: 56px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.otp-input:hover {
+  border-color: #2563eb;
+}
+
+
+/* ========================================
+   8. Responsive Rules
+======================================== */
+@media (max-width: 900px){
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  .subtitle{
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px){
+  .twoCol{
+    grid-template-columns: 1fr;
+  }
+
+  .actions{
+    justify-content: stretch;
+  }
+
+  .btn{
+    width: 100%;
+  }
+
+  .codeBox{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .kvRow{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kvRow strong{
+    min-width: auto;
+  }
+}
+
+@media (max-width: 600px){
+  .container{
+    padding: 12px;
+  }
+
+  .header{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .title{
+    font-size: 24px;
+  }
+
+  .badge{
+    width: fit-content;
+  }
+
+  .card{
+    padding: 14px;
+  }
+
+  .otp-wrapper{
+    gap: 8px;
+  }
+
+  .otp-input{
+    width: 40px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}
