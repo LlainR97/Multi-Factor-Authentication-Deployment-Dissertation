@@ -31,7 +31,7 @@ User Flow
 
 The following screenshots illustrate the complete user journey:
 
-![Instructions](final-artefact-screenshots/TOTP instruction.png)
+![Instructions](final-artefact-screenshots/TOTP_instruction.png)
 
 ![Sign Up](final-artefact-screenshots/Sign in – email OTP.png)
 
