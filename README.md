@@ -33,7 +33,7 @@ The following screenshots illustrate the complete user journey:
 
 ![Instructions](final-artefact-screenshots/TOTP_instruction.png)
 
-![Sign Up](final-artefact-screenshots/SignIn_EmailOTP.png)
+![Sign Up](final-artefact-screenshots/EmailOTP_signup.png)
 
 ![Email OTP](final-artefact-screenshots/Verify_email_OTP.png)
 
