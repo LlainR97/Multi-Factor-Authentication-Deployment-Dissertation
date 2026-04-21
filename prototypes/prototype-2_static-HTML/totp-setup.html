@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Setup TOTP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Setup TOTP</h2>
+  <p>Scan this QR code with Google Authenticator / Microsoft Authenticator:</p>
+  <div>
+    <img id="qrCode" src="" alt="TOTP QR" style="background:#fff; padding:10px;"/>
+  </div>
+  <button id="nextBtn">Next → Login</button>
+</div>
+
+<script>
+async function loadQR() {
+  const email = localStorage.getItem('email') || 'test@example.com'; // fallback if missing
+
+  try {
+    // If you have a backend generating real TOTP QR
+    const res = await fetch('http://localhost:3000/generate-totp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+
+    if (data.qrDataURL) {
+      document.getElementById('qrCode').src = data.qrDataURL;
+      localStorage.setItem('qrDataURL', data.qrDataURL);
+    } else {
+      throw new Error('No QR returned');
+    }
+  } catch (err) {
+    console.warn('Using dummy QR for demo', err);
+
+    // Dummy QR for demo/testing without backend
+    const dummyQR = 'otpauth://totp/Test%20Token?secret=2FASTEST&issuer=2FAS';
+    document.getElementById('qrCode').src = dummyQR;
+    localStorage.setItem('qrDataURL', dummyQR);
+  }
+}
+
+// Load QR code on page load
+loadQR();
+
+// Navigate to login page when user clicks next
+document.getElementById('nextBtn').addEventListener('click', () => {
+  window.location.href = 'login.html';
+});
+</script>
+</body>
+</html>
