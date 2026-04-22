@@ -16,6 +16,8 @@ The final system is a fully functional web application built using Node.js, inco
 
 *	TOTP (Authenticator App) set up and verification
 
+*	Unable to complete this step button for users who struggled with the process
+
 *	Questionnaire for user feedback
 
 *	Unique participant completion identifiers 
