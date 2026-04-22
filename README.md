@@ -8,17 +8,17 @@ The application guides users through a structured authentication process, each m
 ## Final System
 The final system is a fully functional web application built using Node.js, incorporating both frontend and backend components. Key features include:
 
-	Instructional videos embedded in the web application for user guidance 
+*	Instructional videos embedded in the web application for user guidance 
 
-	User account creation and login
+*	User account creation and login
 
-	Email OTP authentication
+*	Email OTP authentication
 
-	TOTP (Authenticator App) set up and verification
+*	TOTP (Authenticator App) set up and verification
 
-	Questionnaire for user feedback
+*	Questionnaire for user feedback
 
-	Unique participant completion identifiers 
+*	Unique participant completion identifiers 
 
 ## Deployment & Security
 
@@ -51,13 +51,13 @@ The following screenshots illustrate the complete user journey:
 
 The system was developed through multiple stages:
 
-	Prototype 1 – Basic login interface 
+*	Prototype 1 – Basic login interface 
 
-	Prototype 2 – Static MFA implementation 
+*	Prototype 2 – Static MFA implementation 
 
-	Prototype 3 – Interactive system 
+*	Prototype 3 – Interactive system 
 
-	Final System – Fully functional deployed Application
+*	Final System – Fully functional deployed Application
 
 All prototypes are included in this repository to demonstrate progression and the designs evolution. 
 
@@ -67,13 +67,13 @@ A total of 37 participants completed the study.
 
 ![MFA Completion](results/mfa-completion-chart.png)
  
-	Email OTP: 17/18 completed 
+*	Email OTP: 17/18 completed 
 
-	TOTP 12/19 completed
+*	TOTP 12/19 completed
 
-	1 Participant was unable to complete EmailOTP 
+*	1 Participant was unable to complete EmailOTP 
 
-	7 Participants were unable to complete TOTP 
+*	7 Participants were unable to complete TOTP 
 
 This result suggests that more complex MFA methods, such as TOTP may introduce usability challenges for non-technical users. 
 
@@ -81,11 +81,11 @@ This result suggests that more complex MFA methods, such as TOTP may introduce u
 
 Additional materials were given to every participant during the study, and these include:
 
-	Guidance documents           /GuidanceDocs
+*	Guidance documents           /GuidanceDocs
 
-	Instructional videos            /videos
+*	Instructional videos            /videos
 
-	Prototype versions             / prototypes
+*	Prototype versions             / prototypes
 
 Ethics and Consent 
 
