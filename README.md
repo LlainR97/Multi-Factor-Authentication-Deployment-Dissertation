@@ -87,7 +87,7 @@ Additional materials were given to every participant during the study, and these
 
 *	Prototype versions             / prototypes
 
-Ethics and Consent 
+## Ethics and Consent 
 
 Before conducting the study, ethical approval was obtained. Participants provided informed consent through an approved institutional consent form.
 A total of 41 consent forms were received, with 37 participants completing the study. All collected data was fully anonymised. 
