@@ -61,7 +61,7 @@ The system was developed through multiple stages:
 
 All prototypes are included in this repository to demonstrate progression and the designs evolution. 
 
-## 📊 Results Summary
+## Results Summary
 
 A total of 37 participants completed the study. 
 
