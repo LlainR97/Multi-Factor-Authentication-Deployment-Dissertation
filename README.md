@@ -99,4 +99,3 @@ The system was deployed and accessed through a live web interface using a config
 As the project relies on a virtual environment and specific deployment configurations, it is now no longer intended to run locally without additional setup. 
 
 The application was fully operational during testing, 37 participants were able to use it successfully to complete the MFA tasks and questionnaire. 
-
