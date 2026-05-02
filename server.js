@@ -177,7 +177,7 @@ const stmtUpdateResearchVerifyComplete = db.prepare(`
 `);
 const stmtGetResearch = db.prepare(`SELECT * FROM research_records WHERE participant_id=?`);
 
-// ---------- Helper: randomise A/B ----------
+// randomise A/B 
 function assignMfaMethod(req) {
   if (!req.session.mfa_method) {
     // Randomise assignment (Option A vs Option B)
@@ -186,7 +186,7 @@ function assignMfaMethod(req) {
   return req.session.mfa_method;
 }
 
-// ---------- Helper: encryption for TOTP secrets ----------
+// encryption for TOTP secrets
 function encryptText(plain) {
   const iv = crypto.randomBytes(12);
   const key = crypto.createHash("sha256").update(DATA_ENCRYPTION_KEY).digest();
@@ -208,9 +208,9 @@ function decryptText(encB64) {
   return dec.toString("utf8");
 }
 
-// ---------- Helper: OTP ----------
+//  OTP 
 function generate6DigitCode() {
-  // avoid leading zeros issues by padding
+  
   const n = crypto.randomInt(0, 1000000);
   return String(n).padStart(6, "0");
 }
@@ -235,7 +235,7 @@ async function sendOtpEmail(toEmail, code) {
   });
 }
 
-// ---------- Routes ----------
+// Routes
 
 // Instruction / landing
 app.get("/", (req, res) => {
@@ -370,7 +370,7 @@ app.post("/verify-email/check", authLimiter, async (req, res) => {
   SET completion_status = 'COMPLETED'
   WHERE participant_id = ?
 `).run(req.session.participant_id);
-  // delete email-containing record (per your requirement)
+  // delete email-containing record
   stmtDeleteAuthById.run(auth.id);
   req.session.auth_record_id = null;
 
@@ -447,7 +447,7 @@ app.post("/verify-totp", authLimiter, async (req, res) => {
   WHERE participant_id = ?
 `).run(req.session.participant_id);
 
-  // delete email-containing record (per your requirement)
+  // delete email-containing record 
   stmtDeleteAuthById.run(auth.id);
   req.session.auth_record_id = null;
 
